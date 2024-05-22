@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import CharacterCreationPhaseOne from './pages/CharacterCreationPhaseOne';
+import NotFound from './pages/NotFound';
+import Header from './components/common/Header';
+import NavBar from './components/common/NavBar';
+import { CharacterProvider } from './context/CharacterContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CharacterProvider>
+      <Router>
+        <Header />
+        <NavBar />
+        <Switch>
+          <Route path="/" exact component={CharacterCreationPhaseOne} />
+          {/* Add more routes as needed */}
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </CharacterProvider>
   );
 }
 
