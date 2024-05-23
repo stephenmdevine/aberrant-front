@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:8080/api/characters';
+const API_URL = 'http://localhost:8080/characters';
 
 const createCharacter = (characterData) => {
     return axios.post('${API_URL}', characterData);
