@@ -1,26 +1,26 @@
-import React, { useContext, useState } from 'react';
+/*import React, { useContext, useState } from 'react';
 import CharacterContext from '../../../context/CharacterContext';
 
 const AttributesForm = () => {
   const { character, setCharacter, updateCharacter } = useContext(CharacterContext);
 
-const initialAttributes = {
+  const initialAttributes = {
     Physical: {
-        Strength: character.attributes?.Strength || 0,
-        Dexterity: character.attributes?.Dexterity || 0,
-        Stamina: character.attributes?.Stamina || 0,
+      Strength: character.attributes?.Strength || 0,
+      Dexterity: character.attributes?.Dexterity || 0,
+      Stamina: character.attributes?.Stamina || 0,
     },
     Mental: {
-        Perception: character.attributes?.Perception || 0,
-        Intelligence: character.attributes?.Intelligence || 0,
-        Wits: character.attributes?.Wits || 0,
+      Perception: character.attributes?.Perception || 0,
+      Intelligence: character.attributes?.Intelligence || 0,
+      Wits: character.attributes?.Wits || 0,
     },
     Social: {
-        Appearance: character.attributes?.Appearance || 0,
-        Manipulation: character.attributes?.Manipulation || 0,
-        Charisma: character.attributes?.Charisma || 0,
+      Appearance: character.attributes?.Appearance || 0,
+      Manipulation: character.attributes?.Manipulation || 0,
+      Charisma: character.attributes?.Charisma || 0,
     },
-};
+  };
 
   const [attributes, setAttributes] = useState(initialAttributes);
   const [qualityDetails, setQualityDetails] = useState({});
@@ -47,13 +47,13 @@ const initialAttributes = {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const flatAttributes = {
-        ...attributes.Physical,
-        ...attributes.Mental,
-        ...attributes.Social,
+      ...attributes.Physical,
+      ...attributes.Mental,
+      ...attributes.Social,
     };
     const request = {
-        attributeValues: flatAttributes,
-        qualityDetails: qualityDetails,
+      attributeValues: flatAttributes,
+      qualityDetails: qualityDetails,
     };
     await updateCharacter(character.id, { ...character, attributes: flatAttributes });
   };
@@ -109,6 +109,58 @@ const initialAttributes = {
       <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white">Save Attributes</button>
     </form>
   );
+};
+*/
+
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const AttributesForm = () => {
+  let navigate = useNavigate();
+
+  const categories = ['Physical', 'Mental', 'Social'];
+  const categoryValues = [7, 5, 3];
+
+  const CategorySelector = () => {
+    const [selectedValues, setSelectedValues] = useState({
+      Physical: null,
+      Mental: null,
+      Social: null,
+    });
+
+    const [availableValues, setAvailableValues] = useState(categoryValues);
+
+    const handleCategorySelection = (category, categoryValue) => {
+      setSelectedValues((prev) => ({
+        ...prev,
+        [category]: categoryValue,
+      }));
+
+      setAvailableValues((prev) => prev.filter((v) => v !== categoryValue));
+    };
+  };
+  
+  const initialAttributes = {
+    Physical: {
+      Strength: character.attributes?.Strength || 1,
+      Dexterity: character.attributes?.Dexterity || 1,
+      Stamina: character.attributes?.Stamina || 1,
+    },
+    Mental: {
+      Perception: character.attributes?.Perception || 1,
+      Intelligence: character.attributes?.Intelligence || 1,
+      Wits: character.attributes?.Wits || 1,
+    },
+    Social: {
+      Appearance: character.attributes?.Appearance || 1,
+      Manipulation: character.attributes?.Manipulation || 1,
+      Charisma: character.attributes?.Charisma || 1,
+    },
+  };
+
+  const [attributes, setAttributes] = useState(initialAttributes);
+  const [qualityDetails, setQualityDetails] = useState({});
+
 };
 
 export default AttributesForm;
