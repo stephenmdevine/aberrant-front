@@ -1,39 +1,75 @@
-/*import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 import CharacterContext from '../../../context/CharacterContext';
+
+const AttributeSelector = ({ category, attributes, onAttributeChange, availableValues, handleSelection }) => {
+  return (
+    <div>
+      <h2 className="text-lg font-medium">{category} Attributes</h2>
+      {Object.keys(attributes).map((attribute) => (
+        <div key={attribute}>
+          <label htmlFor={attribute} className="block text-sm font-medium text-gray-700">
+            {attribute}
+          </label>
+          {attributes[attribute] === null ? (
+            <select
+              onChange={(e) => handleSelection(category, attribute, Number(e.target.value))}
+              value=""
+              className="mt-1 block w-full"
+            >
+              <option value="" disabled>
+                Select a value
+              </option>
+              {availableValues.map((value) => (
+                <option key={value} value={value}>
+                  {value}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <p>{attributes[attribute]}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const AttributesForm = () => {
   const { character, setCharacter, updateCharacter } = useContext(CharacterContext);
 
   const initialAttributes = {
     Physical: {
-      Strength: character.attributes?.Strength || 0,
-      Dexterity: character.attributes?.Dexterity || 0,
-      Stamina: character.attributes?.Stamina || 0,
+      Strength: null,
+      Dexterity: null,
+      Stamina: null,
     },
     Mental: {
-      Perception: character.attributes?.Perception || 0,
-      Intelligence: character.attributes?.Intelligence || 0,
-      Wits: character.attributes?.Wits || 0,
+      Perception: null,
+      Intelligence: null,
+      Wits: null,
     },
     Social: {
-      Appearance: character.attributes?.Appearance || 0,
-      Manipulation: character.attributes?.Manipulation || 0,
-      Charisma: character.attributes?.Charisma || 0,
+      Appearance: null,
+      Manipulation: null,
+      Charisma: null,
     },
   };
 
   const [attributes, setAttributes] = useState(initialAttributes);
+  const [availableValues, setAvailableValues] = useState([7, 5, 3]);
   const [qualityDetails, setQualityDetails] = useState({});
 
-  const handleAttributeChange = (e, category, attribute) => {
-    const value = parseInt(e.target.value, 10);
-    setAttributes({
-      ...attributes,
+  const handleSelection = (category, attribute, value) => {
+    setAttributes((prev) => ({
+      ...prev,
       [category]: {
-        ...attributes[category],
+        ...prev[category],
         [attribute]: value,
       },
-    });
+    }));
+
+    setAvailableValues((prev) => prev.filter((v) => v !== value));
   };
 
   const handleQualityDetailsChange = (e, attribute) => {
@@ -55,112 +91,28 @@ const AttributesForm = () => {
       attributeValues: flatAttributes,
       qualityDetails: qualityDetails,
     };
-    await updateCharacter(character.id, { ...character, attributes: flatAttributes });
+    await axios.post(`http://localhost:8080/characters/${character.id}/allocateAttributePoints`, request);
+    // Optionally update local character state
+    setCharacter({ ...character, attributes: flatAttributes });
   };
 
   return (
     <form onSubmit={handleSubmit} className="p-4">
       {['Physical', 'Mental', 'Social'].map((category) => (
-        <div key={category}>
-          <h2 className="text-lg font-medium">{category} Attributes</h2>
-          {Object.keys(attributes[category]).map((attribute) => (
-            <div key={attribute}>
-              <label htmlFor={attribute} className="block text-sm font-medium text-gray-700">
-                {attribute}
-              </label>
-              <input
-                type="number"
-                name={attribute}
-                id={attribute}
-                value={attributes[category][attribute]}
-                onChange={(e) => handleAttributeChange(e, category, attribute)}
-                className="mt-1 block w-full"
-                min="1"
-                max="5"
-              />
-              {attributes[category][attribute] >= 4 && (
-                <>
-                  <label htmlFor={`${attribute}_name`} className="block text-sm font-medium text-gray-700">
-                    {attribute} Quality Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id={`${attribute}_name`}
-                    onChange={(e) => handleQualityDetailsChange(e, attribute)}
-                    className="mt-1 block w-full"
-                  />
-                  <label htmlFor={`${attribute}_description`} className="block text-sm font-medium text-gray-700">
-                    {attribute} Quality Description
-                  </label>
-                  <input
-                    type="text"
-                    name="description"
-                    id={`${attribute}_description`}
-                    onChange={(e) => handleQualityDetailsChange(e, attribute)}
-                    className="mt-1 block w-full"
-                  />
-                </>
-              )}
-            </div>
-          ))}
-        </div>
+        <AttributeSelector
+          key={category}
+          category={category}
+          attributes={attributes[category]}
+          onAttributeChange={handleSelection}
+          availableValues={availableValues}
+          handleSelection={handleSelection}
+        />
       ))}
-      <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white">Save Attributes</button>
+      <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white">
+        Save Attributes
+      </button>
     </form>
   );
-};
-*/
-
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-const AttributesForm = () => {
-  let navigate = useNavigate();
-
-  const categories = ['Physical', 'Mental', 'Social'];
-  const categoryValues = [7, 5, 3];
-
-  const CategorySelector = () => {
-    const [selectedValues, setSelectedValues] = useState({
-      Physical: null,
-      Mental: null,
-      Social: null,
-    });
-
-    const [availableValues, setAvailableValues] = useState(categoryValues);
-
-    const handleCategorySelection = (category, categoryValue) => {
-      setSelectedValues((prev) => ({
-        ...prev,
-        [category]: categoryValue,
-      }));
-
-      setAvailableValues((prev) => prev.filter((v) => v !== categoryValue));
-    };
-  };
-  
-  const initialAttributes = {
-    Physical: {
-      Strength: character.attributes?.Strength || 1,
-      Dexterity: character.attributes?.Dexterity || 1,
-      Stamina: character.attributes?.Stamina || 1,
-    },
-    Mental: {
-      Perception: character.attributes?.Perception || 1,
-      Intelligence: character.attributes?.Intelligence || 1,
-      Wits: character.attributes?.Wits || 1,
-    },
-    Social: {
-      Appearance: character.attributes?.Appearance || 1,
-      Manipulation: character.attributes?.Manipulation || 1,
-      Charisma: character.attributes?.Charisma || 1,
-    },
-  };
-
-  const [attributes, setAttributes] = useState(initialAttributes);
-  const [qualityDetails, setQualityDetails] = useState({});
-
 };
 
 export default AttributesForm;
