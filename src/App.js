@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom';
 import CharacterCreationPhaseOne from './pages/CharacterCreationPhaseOne';
 import NotFound from './pages/NotFound';
 import Header from './components/common/Header';
@@ -12,11 +12,11 @@ function App() {
       <Router>
         <Header />
         <NavBar />
-        <Switch>
+        <Routes>
           <Route path="/" exact component={CharacterCreationPhaseOne} />
           {/* Add more routes as needed */}
           <Route component={NotFound} />
-        </Switch>
+        </Routes>
       </Router>
     </CharacterProvider>
   );
