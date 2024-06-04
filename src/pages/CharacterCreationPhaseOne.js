@@ -1,8 +1,8 @@
 import React from 'react';
-import BackgroundsForm from '../components/CharacterCreation/PhaseOne/BackgroundsForm';
+import BasicInfoForm from '../components/CharacterCreation/PhaseOne/BasicInfoForm';
 import AttributesForm from '../components/CharacterCreation/PhaseOne/AttributesForm';
 import AbilitiesForm from '../components/CharacterCreation/PhaseOne/AbilitiesForm';
-import BasicInfoForm from '../components/CharacterCreation/PhaseOne/BasicInfoForm';
+import BackgroundsForm from '../components/CharacterCreation/PhaseOne/BackgroundsForm';
 import BonusPointsForm from '../components/CharacterCreation/PhaseOne/BonusPointsForm';
 
 const CharacterCreationPhaseOne = () => {
