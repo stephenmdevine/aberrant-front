@@ -1,8 +1,8 @@
-import React/*, { useState, useContext }*/ from 'react';
-// import axios from 'axios';
-// import CharacterContext from '../../../context/CharacterContext';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import CharacterContext from '../../../context/CharacterContext';
 
-const AbilitiesForm = () => {/*
+const AbilitiesForm = () => {
   const { character, setCharacter } = useContext(CharacterContext);
   const [abilities, setAbilities] = useState([]);
   const [newAbility, setNewAbility] = useState('');
@@ -83,13 +83,13 @@ const AbilitiesForm = () => {/*
         Save Abilities
       </button>
     </form>
-  );*/
-
+  );
+/*
   return (
     <div>
 
     </div>
-  );
+  );*/
 
 };
 

@@ -1,8 +1,8 @@
-import React/*, { useState, useContext }*/ from 'react';
-// import axios from 'axios';
-// import CharacterContext from '../../../context/CharacterContext';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import CharacterContext from '../../../context/CharacterContext';
 
-const BackgroundsForm = () => {/*
+const BackgroundsForm = () => {
   const { character, setCharacter } = useContext(CharacterContext);
   const [backgrounds, setBackgrounds] = useState([]);
   const [newBackground, setNewBackground] = useState('');
@@ -83,13 +83,13 @@ const BackgroundsForm = () => {/*
         Save Backgrounds
       </button>
     </form>
-  );*/
-
+  );
+/*
   return (
     <div>
 
     </div>
-  );
+  );*/
 
 };
 

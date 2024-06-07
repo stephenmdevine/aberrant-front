@@ -1,7 +1,7 @@
-// import { useContext, useState } from "react"
-// import CharacterContext from "../../../context/CharacterContext"
+import { useContext, useState } from "react"
+import CharacterContext from "../../../context/CharacterContext"
 
-const BasicInfoForm = () => {/*
+const BasicInfoForm = () => {
   const { character, setCharacter, createCharacter } = useContext(CharacterContext);
   const [basicInfo, setBasicInfo] = useState({
     name: character.name,
@@ -55,8 +55,8 @@ const BasicInfoForm = () => {/*
       </div>
       <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white">Save Basic Info</button>
     </form>
-  );*/
-
+  );
+/*
   return (
     <form>
       <div>
@@ -84,7 +84,7 @@ const BasicInfoForm = () => {/*
         <input type="number" name="novaPoints" />
       </div>
     </form>
-  );
+  );*/
 
 };
 

@@ -5,12 +5,12 @@ import About from './pages/About';
 import Home from './pages/Home';
 // import NotFound from './pages/NotFound';
 import Header from './components/common/Header';
-// import { CharacterProvider } from './context/CharacterContext';
+import { CharacterProvider } from './context/CharacterContext';
 
 function App() {
   return (
     <Router>
-      {/* <CharacterProvider> */}
+      <CharacterProvider>
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
           {/* Add more routes as needed */}
           {/* <Route path='/not-found' exact component={NotFound} /> */}
         </Routes>
-      {/* </CharacterProvider> */}
+      </CharacterProvider>
     </Router>
   );
 }
