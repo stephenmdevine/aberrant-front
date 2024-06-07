@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
-import CharacterContext from '../../../context/CharacterContext';
-
+import React/*, { useContext, useState, useEffect }*/ from 'react';
+// import axios from 'axios';
+// import CharacterContext from '../../../context/CharacterContext';
+/*
 const AttributeSelector = ({ category, attributes, onAttributeChange, availableValues, handleSelection }) => {
   return (
     <div>
@@ -33,9 +33,9 @@ const AttributeSelector = ({ category, attributes, onAttributeChange, availableV
       ))}
     </div>
   );
-};
+};*/
 
-const AttributesForm = () => {
+const AttributesForm = () => {/*
   const { character, setCharacter, updateCharacter } = useContext(CharacterContext);
 
   const initialAttributes = {
@@ -112,7 +112,14 @@ const AttributesForm = () => {
         Save Attributes
       </button>
     </form>
+  );*/
+
+  return (
+    <div>
+
+    </div>
   );
+
 };
 
 export default AttributesForm;

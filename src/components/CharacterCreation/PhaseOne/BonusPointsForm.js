@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
-import axios from 'axios';
-import CharacterContext from '../../../context/CharacterContext';
+import React/*, { useState, useContext }*/ from 'react';
+// import axios from 'axios';
+// import CharacterContext from '../../../context/CharacterContext';
 
-const BonusPointsForm = () => {
+const BonusPointsForm = () => {/*
   const { character, setCharacter } = useContext(CharacterContext);
   const [bonusPoints, setBonusPoints] = useState(character.bonusPoints);
   const [attributes, setAttributes] = useState({});
@@ -220,7 +220,14 @@ const BonusPointsForm = () => {
         Spend Bonus Points
       </button>
     </form>
+  );*/
+
+  return (
+    <div>
+
+    </div>
   );
+
 };
 
 export default BonusPointsForm;

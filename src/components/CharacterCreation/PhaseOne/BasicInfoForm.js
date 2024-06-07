@@ -1,7 +1,7 @@
-import { useContext, useState } from "react"
-import CharacterContext from "../../../context/CharacterContext"
+// import { useContext, useState } from "react"
+// import CharacterContext from "../../../context/CharacterContext"
 
-const BasicInfoForm = () => {
+const BasicInfoForm = () => {/*
   const { character, setCharacter, createCharacter } = useContext(CharacterContext);
   const [basicInfo, setBasicInfo] = useState({
     name: character.name,
@@ -54,6 +54,35 @@ const BasicInfoForm = () => {
         <input type="number" name="novaPoints" id="novaPoints" value={basicInfo.novaPoints} onChange={handleChange} className="mt-1 block w-full" />
       </div>
       <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white">Save Basic Info</button>
+    </form>
+  );*/
+
+  return (
+    <form>
+      <div>
+        <label>Name</label>
+        <input type="text" name="name" />
+      </div>
+      <div>
+        <label>Player</label>
+        <input type="text" name="player" />
+      </div>
+      <div>
+        <label>Concept</label>
+        <input type="text" name="concept" />
+      </div>
+      <div>
+        <label>Nature</label>
+        <input type="text" name="nature" />
+      </div>
+      <div>
+        <label>Bonus Points</label>
+        <input type="number" name="bonusPoints" />
+      </div>
+      <div>
+        <label>Nova Points</label>
+        <input type="number" name="novaPoints" />
+      </div>
     </form>
   );
 
