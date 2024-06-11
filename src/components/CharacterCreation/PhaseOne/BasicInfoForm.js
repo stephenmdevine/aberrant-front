@@ -1,6 +1,8 @@
 import { useContext, useState } from "react"
 import CharacterContext from "../../../context/CharacterContext"
-
+import { useNavigate } from "react-router-dom"
+import axios from "axios";
+/*
 const BasicInfoForm = () => {
   const { character, setCharacter, createCharacter } = useContext(CharacterContext);
   const [basicInfo, setBasicInfo] = useState({
@@ -56,36 +58,46 @@ const BasicInfoForm = () => {
       <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white">Save Basic Info</button>
     </form>
   );
-/*
-  return (
-    <form>
-      <div>
-        <label>Name</label>
-        <input type="text" name="name" />
-      </div>
-      <div>
-        <label>Player</label>
-        <input type="text" name="player" />
-      </div>
-      <div>
-        <label>Concept</label>
-        <input type="text" name="concept" />
-      </div>
-      <div>
-        <label>Nature</label>
-        <input type="text" name="nature" />
-      </div>
-      <div>
-        <label>Bonus Points</label>
-        <input type="number" name="bonusPoints" />
-      </div>
-      <div>
-        <label>Nova Points</label>
-        <input type="number" name="novaPoints" />
-      </div>
-    </form>
-  );*/
-
 };
 
-export default BasicInfoForm;
+export default BasicInfoForm;*/
+
+export default function BasicInfoForm() {
+  let navigate = useNavigate();
+
+  const [character, setCharacter] = useState({
+    name: '',
+    player: '',
+    novaName: '',
+    concept: '',
+    nature: '',
+    allegiance: '',
+    description: '',
+    initiative: 0,
+    willpower: 3,
+    quantum: 1,
+    quantumPool: 0,
+    taint: 0,
+    attributePoints: 15,
+    abilityPoints: 23,
+    backgroundPoints: 7,
+    bonusPoints: 15,
+    novaPoints: 30,
+    experiencePoints: 0
+  });
+
+  const { name, player, novaName, concept, nature, allegiance, description, 
+    initiative, willpower, quantum, quantumPool, taint, 
+    attributePoints, abilityPoints, backgroundPoints, bonusPoints, novaPoints, experiencePoints } = character;
+
+  const onInputChange = (e) => {
+    setCharacter({ ...character, [e.target.name]: e.target.value});
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post("http://localhost:8080/characters/create", character);
+    // navigate("/");
+  };
+
+}
