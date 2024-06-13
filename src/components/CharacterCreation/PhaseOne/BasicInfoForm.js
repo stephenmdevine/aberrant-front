@@ -1,6 +1,6 @@
-import { useContext, useState } from "react"
-import CharacterContext from "../../../context/CharacterContext"
-import { useNavigate } from "react-router-dom"
+import { useContext, useState } from "react";
+import CharacterContext from "../../../context/CharacterContext";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 /*
 const BasicInfoForm = () => {
@@ -99,5 +99,59 @@ export default function BasicInfoForm() {
     await axios.post("http://localhost:8080/characters/create", character);
     // navigate("/");
   };
+
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <h2>Create New Character</h2>
+
+          <form onSubmit={(e) => onSubmit(e)}>
+            <div className="mb-3">
+      <div>
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+        <input type="text" name="name" id="name" value={basicInfo.name} onChange={handleChange} className="mt-1 block w-full" />
+      </div>
+              <label htmlFor="Name" className="form-label">Name</label>
+              <input type={"text"} className="form-control" placeholder="Enter your character's name" 
+              name="name" value={name} onChange={(e) => onInputChange(e)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="Username" className="form-label">
+                Username
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter your username"
+                name="username"
+                value={username}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="Email" className="form-label">
+                E-mail
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter your e-mail address"
+                name="email"
+                value={email}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <button type="submit" className="btn btn-outline-primary">
+              Submit
+            </button>
+            <Link className="btn btn-outline-danger mx-2" to="/">
+              Cancel
+            </Link>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 
 }
