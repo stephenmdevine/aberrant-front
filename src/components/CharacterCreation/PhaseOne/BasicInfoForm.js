@@ -108,7 +108,7 @@ export default function BasicInfoForm() {
 
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
-              <label htmlFor="Name" className="form-label">Player</label>
+              <label htmlFor="Player" className="form-label">Player</label>
               <input type={"text"} className="form-control" placeholder="Enter your name" 
               name="player" value={player} onChange={(e) => onInputChange(e)} />
             </div>
@@ -118,53 +118,39 @@ export default function BasicInfoForm() {
               name="name" value={name} onChange={(e) => onInputChange(e)} />
             </div>
             <div className="mb-3">
-              <label htmlFor="Name" className="form-label">Name</label>
-              <input type={"text"} className="form-control" placeholder="Enter your character's name" 
-              name="name" value={name} onChange={(e) => onInputChange(e)} />
-            </div>
-
-    novaName: '',
-    concept: '',
-    nature: '',
-    allegiance: '',
-    description: '',
-    initiative: 0,
-    willpower: 3,
-    quantum: 1,
-    quantumPool: 0,
-    taint: 0,
-    attributePoints: 15,
-    abilityPoints: 23,
-    backgroundPoints: 7,
-    bonusPoints: 15,
-    novaPoints: 30,
-    experiencePoints: 0
-
-            <div className="mb-3">
-              <label htmlFor="Username" className="form-label">
-                Username
-              </label>
-              <input
-                type={"text"}
-                className="form-control"
-                placeholder="Enter your username"
-                name="username"
-                value={username}
-                onChange={(e) => onInputChange(e)}
-              />
+              <label htmlFor="NovaName" className="form-label">Nova Name</label>
+              <input type={"text"} className="form-control" placeholder="Enter your character's 'superhero' name" 
+              name="novaName" value={novaName} onChange={(e) => onInputChange(e)} />
             </div>
             <div className="mb-3">
-              <label htmlFor="Email" className="form-label">
-                E-mail
-              </label>
-              <input
-                type={"text"}
-                className="form-control"
-                placeholder="Enter your e-mail address"
-                name="email"
-                value={email}
-                onChange={(e) => onInputChange(e)}
-              />
+              <label htmlFor="Concept" className="form-label">Character Concept</label>
+              <input type={"text"} className="form-control" placeholder="Enter your character concept" 
+              name="concept" value={concept} onChange={(e) => onInputChange(e)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="Nature" className="form-label">Nature</label>
+              <input type={"text"} className="form-control" placeholder="Enter your character's nature" 
+              name="nature" value={nature} onChange={(e) => onInputChange(e)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="Allegiance" className="form-label">Allegiance</label>
+              <input type={"text"} className="form-control" placeholder="Enter your character's allegiance" 
+              name="allegiance" value={allegiance} onChange={(e) => onInputChange(e)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="Description" className="form-label">Character Description</label>
+              <input type={"text"} className="form-control" placeholder="Enter a description of your character" 
+              name="description" value={description} onChange={(e) => onInputChange(e)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="BonusPoints" className="form-label">Bonus Points</label>
+              <input type={"number"} className="form-control"  
+              name="bonusPoints" value={bonusPoints} onChange={(e) => onInputChange(e)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="NovaPoints" className="form-label">Nova Points</label>
+              <input type={"number"} className="form-control"  
+              name="novaPoints" value={novaPoints} onChange={(e) => onInputChange(e)} />
             </div>
             <button type="submit" className="btn btn-outline-primary">
               Submit
