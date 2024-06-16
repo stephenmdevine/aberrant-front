@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import CharacterContext from "../../../context/CharacterContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 /*
 const BasicInfoForm = () => {
@@ -155,7 +155,7 @@ export default function BasicInfoForm() {
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/">
+            <Link to="/">
               Cancel
             </Link>
           </form>
