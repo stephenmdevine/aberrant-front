@@ -96,7 +96,7 @@ export default function BasicInfoForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/characters/create", character);
+    await axios.post("http://localhost:8080/characters/new", character);
     // navigate("/");
   };
 
