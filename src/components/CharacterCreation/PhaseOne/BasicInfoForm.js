@@ -73,11 +73,6 @@ export default function BasicInfoForm() {
     nature: '',
     allegiance: '',
     description: '',
-    initiative: 0,
-    willpower: 3,
-    quantum: 1,
-    quantumPool: 0,
-    taint: 0,
     attributePoints: 15,
     abilityPoints: 23,
     backgroundPoints: 7,
@@ -87,7 +82,6 @@ export default function BasicInfoForm() {
   });
 
   const { name, player, novaName, concept, nature, allegiance, description, 
-    initiative, willpower, quantum, quantumPool, taint, 
     attributePoints, abilityPoints, backgroundPoints, bonusPoints, novaPoints, experiencePoints } = character;
 
   const onInputChange = (e) => {
@@ -97,7 +91,7 @@ export default function BasicInfoForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:8080/characters/new", character);
-    // navigate("/");
+    navigate("/");
   };
 
   return (
