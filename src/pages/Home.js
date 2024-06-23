@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Table } from 'react-bootstrap';
 
 const Home = () => {
 
@@ -24,14 +25,14 @@ const Home = () => {
         <Link to={'/basic-info-form'}>Create New Character</Link>
       </div>
       <div>
-        <table>
+        <Table striped bordered hover>
           <thead>
             <tr>
-              <th scope='column'>Character Name</th>
-              <th scope='column'>Player Name</th>
-              <th scope='column'>Baseline Creation</th>
-              <th scope='column'>Nova Creation</th>
-              <th scope='column'>Character Advancement</th>
+              <th>Character Name</th>
+              <th>Player Name</th>
+              <th>Baseline Creation</th>
+              <th>Nova Creation</th>
+              <th>Character Advancement</th>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +57,7 @@ const Home = () => {
 
             ))}
           </tbody>
-        </table>
+        </Table>
       </div>
     </div>
   );
